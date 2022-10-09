@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿global using QuizQuerBeet.Domain.Models;
+global using QuizQuerBeet.Infrastructure.Contracts;
+global using QuizQuerBeet.Infrastructure.Context;
 
-namespace QuizQuerBeet.Infrastructure
-{
-    internal class global
-    {
-    }
-}
+global using System;
+global using System.Linq.Expressions;
+
+global using Microsoft.EntityFrameworkCore;

@@ -10,12 +10,26 @@
     <Folder Include="Context\" />
     <Folder Include="Contracts\" />
     <Folder Include="Converter\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Repositories\" />
+    <Folder Include="Extentions\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\QuizQuerBeet.Domain\QuizQuerBeet.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Microsoft.EntityFrameworkCore.Design" />
+    <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
+    <None Remove="SQLitePCLRaw.bundle_e_sqlite3" />
+    <None Remove="Extentions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.9" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.2" />
+  </ItemGroup>
 </Project>
