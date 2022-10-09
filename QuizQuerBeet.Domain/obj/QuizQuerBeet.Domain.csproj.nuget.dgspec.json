@@ -1,32 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dasler\\source\\repos\\QuizQuerBeet\\QuizQuerBeet.Domain\\QuizQuerBeet.Domain.csproj": {}
+    "/Users/fabian/Projects/C#/QuizQuerBeet/QuizQuerBeet.Domain/QuizQuerBeet.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dasler\\source\\repos\\QuizQuerBeet\\QuizQuerBeet.Domain\\QuizQuerBeet.Domain.csproj": {
+    "/Users/fabian/Projects/C#/QuizQuerBeet/QuizQuerBeet.Domain/QuizQuerBeet.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dasler\\source\\repos\\QuizQuerBeet\\QuizQuerBeet.Domain\\QuizQuerBeet.Domain.csproj",
+        "projectUniqueName": "/Users/fabian/Projects/C#/QuizQuerBeet/QuizQuerBeet.Domain/QuizQuerBeet.Domain.csproj",
         "projectName": "QuizQuerBeet.Domain",
-        "projectPath": "C:\\Users\\Dasler\\source\\repos\\QuizQuerBeet\\QuizQuerBeet.Domain\\QuizQuerBeet.Domain.csproj",
-        "packagesPath": "C:\\Users\\Dasler\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dasler\\source\\repos\\QuizQuerBeet\\QuizQuerBeet.Domain\\obj\\",
+        "projectPath": "/Users/fabian/Projects/C#/QuizQuerBeet/QuizQuerBeet.Domain/QuizQuerBeet.Domain.csproj",
+        "packagesPath": "/Users/fabian/.nuget/packages/",
+        "outputPath": "/Users/fabian/Projects/C#/QuizQuerBeet/QuizQuerBeet.Domain/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Dasler\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/fabian/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100-rc.1.22431.12/RuntimeIdentifierGraph.json"
         }
       }
     }

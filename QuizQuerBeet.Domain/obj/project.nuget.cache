@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c1/PmJB75IqOkGHvbjcAnwPUJwebeVhkFpzfOTAWQAP/0u3V/jzYZFYbvVoPC/aoTDzTcZ5aflCH9NqPr770pA==",
+  "dgSpecHash": "PNmLJeVfMNO9aS3rPH2akVSAZOdZBm+fFlsboBzcseAB7UOW8oDpLkrVNq/3jKYrvDtkZefcrLpdWE6iRvIGYQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dasler\\source\\repos\\QuizQuerBeet\\QuizQuerBeet.Domain\\QuizQuerBeet.Domain.csproj",
+  "projectFilePath": "/Users/fabian/Projects/C#/QuizQuerBeet/QuizQuerBeet.Domain/QuizQuerBeet.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
