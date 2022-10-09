@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31611.283
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizQuerBeet.App", "QuizQuerBeet\QuizQuerBeet.App.csproj", "{F3D0D741-DBBF-4CBF-8534-F901CE73769E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizQuerBeet.Domain", "QuizQuerBeet.Domain\QuizQuerBeet.Domain.csproj", "{DDE6831B-AD64-4047-A23B-149F6F103137}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizQuerBeet.Infrastructure", "QuizQuerBeet.Infrastructure\QuizQuerBeet.Infrastructure.csproj", "{F4BCA73A-A86C-48F6-98B8-9D668146F54E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3D0D741-DBBF-4CBF-8534-F901CE73769E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3D0D741-DBBF-4CBF-8534-F901CE73769E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3D0D741-DBBF-4CBF-8534-F901CE73769E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F3D0D741-DBBF-4CBF-8534-F901CE73769E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3D0D741-DBBF-4CBF-8534-F901CE73769E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3D0D741-DBBF-4CBF-8534-F901CE73769E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DDE6831B-AD64-4047-A23B-149F6F103137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE6831B-AD64-4047-A23B-149F6F103137}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE6831B-AD64-4047-A23B-149F6F103137}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE6831B-AD64-4047-A23B-149F6F103137}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4BCA73A-A86C-48F6-98B8-9D668146F54E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4BCA73A-A86C-48F6-98B8-9D668146F54E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4BCA73A-A86C-48F6-98B8-9D668146F54E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4BCA73A-A86C-48F6-98B8-9D668146F54E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+	EndGlobalSection
+EndGlobal

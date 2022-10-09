@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="QuizQuerBeet.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:QuizQuerBeet.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <Tab x:Name="QuizTab"
+             Title="Quizzes">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:QuizOverview}"
+                Route="quizzes"/>
+        </Tab>
+        <Tab x:Name="StartTab"
+             Title="Start">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:MainPage}"
+                Route="mainPage"/>
+        </Tab>
+        <Tab x:Name="StatisticTab"
+             Title="Statistic">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:Statistics}"
+                Route="statistics"/>
+        </Tab>
+    </TabBar>
+    
+
+</Shell>
