@@ -58,10 +58,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Remove="Resources\Styles\CustomColors.xaml" />
-	  <MauiXaml Remove="Resources\Styles\CustomStyles.xaml" />
-	</ItemGroup>
-	<ItemGroup>
 	  <MauiXaml Update="Views\MainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -80,7 +76,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <BundleResource Include="Resources\Styles\CustomColors.xaml" />
-	  <BundleResource Include="Resources\Styles\CustomStyles.xaml" />
+	  <None Remove="CommunityToolkit.Mvvm" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 	</ItemGroup>
 </Project>
