@@ -50,6 +50,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Views\Templates\" />
+	  <Folder Include="ViewModels\Templates\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -73,10 +74,20 @@
 	  <MauiXaml Update="Views\Statistics.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\CustomColors.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CategorieView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Templates\InformationCard.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <None Remove="CommunityToolkit.Mvvm" />
+	  <None Remove="ViewModels\Templates\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />

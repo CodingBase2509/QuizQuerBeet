@@ -1,5 +1,5 @@
 ﻿namespace QuizQuerBeet.ViewModels;
 
-public class QuizOverviewViewModel
+public sealed class QuizOverviewViewModel: ViewModelBase
 {
 }

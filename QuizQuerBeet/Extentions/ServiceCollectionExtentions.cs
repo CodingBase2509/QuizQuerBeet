@@ -12,6 +12,7 @@ public static class ServiceCollectionExtentions
 
         services.AddTransient<QuizEditing>();
         services.AddTransient<QuestionEditing>();
+        services.AddTransient<CategorieView>();
 
         return services;
     }
@@ -24,6 +25,8 @@ public static class ServiceCollectionExtentions
 
         services.AddTransient<QuizEditingViewModel>();
         services.AddTransient<QuestionEditingViewModel>();
+        services.AddTransient<CategorieViewModel>();
+
         return services;
     }
 }

@@ -12,5 +12,6 @@ public static class ShellExtentions
 
         Routing.RegisterRoute("quizEditing", typeof(QuizEditing));
         Routing.RegisterRoute("questionEditing", typeof(QuestionEditing));
+        Routing.RegisterRoute("categories", typeof(CategorieView));
     }
 }

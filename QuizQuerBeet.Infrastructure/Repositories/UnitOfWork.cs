@@ -1,8 +1,6 @@
-﻿using QuizQuerBeet.Infrastructure.Contracts;
+﻿namespace QuizQuerBeet.Infrastructure.Repositories;
 
-namespace QuizQuerBeet.Infrastructure.Repositories;
-
-internal class UnitOfWork : IUnitOfWork
+internal sealed class UnitOfWork : IUnitOfWork
 {
     private readonly DataContext _dataContext;
     private readonly ITopicRepository _topicsRepository;
@@ -12,6 +10,7 @@ internal class UnitOfWork : IUnitOfWork
     private readonly IStatisticRepository _statisticRepository;
 
     public ITopicRepository Topics => _topicsRepository;
+
     public IQuizRepository Quizzes => _quizRepository;
 
     public IQuestionRepository Questions => _questionRepository;

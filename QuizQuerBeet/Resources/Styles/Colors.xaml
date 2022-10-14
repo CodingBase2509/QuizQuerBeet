@@ -41,23 +41,4 @@
     <Color x:Key="Blue200Accent">#72ACF1</Color>
     <Color x:Key="Blue300Accent">#A7CBF6</Color>
 
-    <!-- Custom App Colors -->
-
-    <Color x:Key="PrimeLight">#6200EE</Color>
-    <Color x:Key="PrimeDark">#BB86FC</Color>
-    <Color x:Key="PrimeVariant">#3700B3</Color>
-
-    <Color x:Key="SecLight">#03DAC6</Color>
-    <Color x:Key="SecDark">#03DAC6</Color>
-    <Color x:Key="SecVariant">#018786</Color>
-
-    <Color x:Key="BgLight">#FFFFFF</Color>
-    <Color x:Key="BgDark">#000000</Color>
-
-    <Color x:Key="TextLight">#000000</Color>
-    <Color x:Key="TextDark">#FFFFFF</Color>
-
-    <Color x:Key="ErrorLight">#B00020</Color>
-    <Color x:Key="ErrorDark">#CF6679</Color>
-
 </ResourceDictionary>
