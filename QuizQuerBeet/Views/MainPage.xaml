@@ -5,5 +5,5 @@
              x:Class="QuizQuerBeet.Views.MainPage"
              x:DataType="vm:MainPageViewModel"
              Title="{Binding Title}">
-    
+
 </ContentPage>
