@@ -7,23 +7,28 @@
     xmlns:qqb="clr-namespace:QuizQuerBeet"
     x:DataType="qqb:AppShell"
     Shell.FlyoutBehavior="Disabled"
-    Shell.NavBarIsVisible="False">
+    Shell.NavBarIsVisible="False"
+    Style="{StaticResource ShellDefault}">
 
-    <TabBar>
+    <TabBar
+        Style="{StaticResource TabbarDefault}">
         <Tab x:Name="QuizTab"
-             Title="Quizzes">
+             Icon="category"
+             Title="Kategorien">
             <ShellContent
-                ContentTemplate="{DataTemplate views:QuizOverview}"
-                Route="quizzes"/>
+                ContentTemplate="{DataTemplate views:CategorieView}"
+                Route="categories"/>
         </Tab>
         <Tab x:Name="StartTab"
+             Icon="home"
              Title="Start">
             <ShellContent
                 ContentTemplate="{DataTemplate views:MainPage}"
                 Route="mainPage"/>
         </Tab>
         <Tab x:Name="StatisticTab"
-             Title="Statistic">
+             Icon="statistic"
+             Title="Statistik">
             <ShellContent
                 ContentTemplate="{DataTemplate views:Statistics}"
                 Route="statistics"/>

@@ -5,10 +5,13 @@
              x:Class="QuizQuerBeet.Views.Statistics"
              x:DataType="vm:StatisticsViewModel"
              Title="{Binding Title}">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid
+        Background="{StaticResource BackgroundBrush}">
+
+        <Label
+            Style="{StaticResource LabelDefault}"
+            Text="Comming soon!"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"/>
+    </Grid>
 </ContentPage>
