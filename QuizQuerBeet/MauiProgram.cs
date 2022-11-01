@@ -17,6 +17,9 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+				fonts.AddFont("Inter-ExtraBold.ttf", "InterEB");
+				fonts.AddFont("Inter-SemiBold.ttf", "InterSB");
+				fonts.AddFont("Inter-Medium.ttf", "InterMedium");
 			});
 
 		builder.Services.AddDbContext<DataContext>(options =>
