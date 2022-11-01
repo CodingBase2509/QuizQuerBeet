@@ -39,9 +39,8 @@
 		<MauiIcon Include="Resources\AppIcon\qqbicontest.svg" BaseSize="130,130" />
 
 		<!-- Splash Screen -->	
-		<MauiSplashScreen Include="Resources\Splash\qqbsplash.jpg" BaseSize="390,844" />
+		<MauiSplashScreen Include="Resources\Splash\qqbsplash.svg" BaseSize="390,844" />
 
-		<MauiImage Include="Resources\Images\*" />
 		<MauiFont Include="Resources\Fonts\*" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
@@ -51,6 +50,7 @@
 	<ItemGroup>
 	  <Folder Include="Views\Templates\" />
 	  <Folder Include="ViewModels\Templates\" />
+	  <Folder Include="Resources\Images\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -89,9 +89,28 @@
 	<ItemGroup>
 	  <None Remove="CommunityToolkit.Mvvm" />
 	  <None Remove="ViewModels\Templates\" />
+	  <None Remove="Resources\Images\" />
+	  <None Remove="Resources\Images\arrowleft.svg" />
+	  <None Remove="Resources\Images\arrowright.svg" />
+	  <None Remove="Resources\Images\bgradiant.svg" />
+	  <None Remove="Resources\Images\category.svg" />
+	  <None Remove="Resources\Images\check.svg" />
+	  <None Remove="Resources\Images\home.svg" />
+	  <None Remove="Resources\Images\statistic.svg" />
+	  <None Remove="Resources\Images\x.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\arrowleft.svg" />
+	  <MauiImage Include="Resources\Images\arrowright.svg" />
+	  <MauiImage Include="Resources\Images\bgradiant.svg" />
+	  <MauiImage Include="Resources\Images\category.svg" />
+	  <MauiImage Include="Resources\Images\check.svg" />
+	  <MauiImage Include="Resources\Images\home.svg" />
+	  <MauiImage Include="Resources\Images\statistic.svg" />
+	  <MauiImage Include="Resources\Images\quit.svg" />
 	</ItemGroup>
 </Project>
