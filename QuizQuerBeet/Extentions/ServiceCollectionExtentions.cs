@@ -7,12 +7,11 @@ public static class ServiceCollectionExtentions
     public static IServiceCollection AddViews(this IServiceCollection services)
     {
         services.AddSingleton<MainPage>();
-        services.AddSingleton<QuizOverview>();
         services.AddSingleton<Statistics>();
+        services.AddSingleton<CategorieView>();
 
         services.AddTransient<QuizEditing>();
         services.AddTransient<QuestionEditing>();
-        services.AddTransient<CategorieView>();
 
         return services;
     }
@@ -20,12 +19,11 @@ public static class ServiceCollectionExtentions
     public static IServiceCollection AddViewModels(this IServiceCollection services)
     {
         services.AddSingleton<MainPageViewModel>();
-        services.AddSingleton<QuizOverviewViewModel>();
         services.AddSingleton<StatisticsViewModel>();
+        services.AddSingleton<CategorieViewModel>();
 
         services.AddTransient<QuizEditingViewModel>();
         services.AddTransient<QuestionEditingViewModel>();
-        services.AddTransient<CategorieViewModel>();
 
         return services;
     }
