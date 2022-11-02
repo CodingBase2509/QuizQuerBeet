@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:QuizQuerBeet.Views.Templates"
+             x:Class="QuizQuerBeet.Views.Templates.MainPage.InfoBanner">
+
+    <templates:QQBFrame>
+        <Grid
+             ColumnDefinitions="*,Auto,*">
+
+            <!-- Left side -->
+            <VerticalStackLayout Grid.Column="0"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="Center">
+                <Label
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Start"
+                        TextColor="{StaticResource TextLight}"
+                        Style="{StaticResource SecHeaderlabel}"
+                        Text="10"/>
+                <Label
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="End"
+                        Margin="0,6,0,0"
+                        TextColor="{StaticResource TextLight}"
+                        Style="{StaticResource LabelDefault}"
+                        Text="Punkte"/>
+            </VerticalStackLayout>
+
+            <Line Grid.Column="1"
+                    WidthRequest="2"
+                    HeightRequest="99"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    BackgroundColor="{StaticResource TextLight}"/>
+
+            <!-- Right side -->
+            <VerticalStackLayout Grid.Column="2"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="Center">
+                <Label
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        TextColor="{StaticResource TextLight}"
+                        Style="{StaticResource SecHeaderlabel}"
+                        Text="10"/>
+                <Label
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="End"
+                        Margin="0,6,0,0"
+                        TextColor="{StaticResource TextLight}"
+                        Style="{StaticResource LabelDefault}"
+                        Text="Fragen beantwortet"/>
+            </VerticalStackLayout>
+        </Grid>
+    </templates:QQBFrame>
+</ContentView>
+

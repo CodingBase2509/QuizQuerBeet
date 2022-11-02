@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Shell Styles -->
+    <Style TargetType="Shell" x:Key="ShellDefault">
+        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+    </Style>
+
+    <Style TargetType="TabBar" x:Key="TabbarDefault">
+        <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource Secondary}"/>
+        <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource TextLight}" />
+        <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
+    </Style>
+
+    <!-- Label Styles -->
+    <Style TargetType="Label" x:Key="LabelDefault">
+        <Setter Property="TextColor" Value="{StaticResource TextLight}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="InterMedium"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="LargeLabelDefault" BasedOn="{StaticResource LabelDefault}">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontFamily" Value="InterSB"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="SecHeaderlabel" BasedOn="{StaticResource LabelDefault}">
+        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="FontFamily" Value="InterSB"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="HeaderLabel" BasedOn="{StaticResource LabelDefault}">
+        <Setter Property="TextColor" Value="{StaticResource TextDark}"/>
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="FontFamily" Value="InterEB"/>
+    </Style>
+
+</ResourceDictionary>

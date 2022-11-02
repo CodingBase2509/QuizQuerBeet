@@ -51,6 +51,7 @@
 	  <Folder Include="Views\Templates\" />
 	  <Folder Include="ViewModels\Templates\" />
 	  <Folder Include="Resources\Images\" />
+	  <Folder Include="Views\Templates\MainPage\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -77,7 +78,16 @@
 	  <MauiXaml Update="Views\CategorieView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Templates\InformationCard.xaml">
+	  <MauiXaml Update="Views\Templates\MainPage\Header.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Templates\MainPage\InfoBanner.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Templates\MainPage\NavigationButton.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Templates\QQBFrame.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>
@@ -98,6 +108,7 @@
 	  <None Remove="Resources\Images\home.svg" />
 	  <None Remove="Resources\Images\statistic.svg" />
 	  <None Remove="Resources\Images\x.svg" />
+	  <None Remove="Views\Templates\MainPage\" />
 	</ItemGroup>
 
 	<ItemGroup>

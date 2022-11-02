@@ -24,4 +24,8 @@
                       Offset="1"/>
     </LinearGradientBrush>
 
+    <SolidColorBrush x:Key="PrimaryColorBrush" Color="{StaticResource Primary}"/>
+    <SolidColorBrush x:Key="SecondaryColorBrush" Color="{StaticResource Secondary}"/>
+    <SolidColorBrush x:Key="SecVariantColorBrush" Color="{StaticResource SecondaryVariant}"/>
+
 </ResourceDictionary>

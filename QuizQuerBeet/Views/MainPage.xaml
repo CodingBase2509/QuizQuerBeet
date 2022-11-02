@@ -2,8 +2,80 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:QuizQuerBeet.ViewModels"
+             xmlns:templates="clr-namespace:QuizQuerBeet.Views.Templates.MainPage"
+             xmlns:enums="clr-namespace:QuizQuerBeet.Domain.Enums;assembly=QuizQuerBeet.Domain"
              x:Class="QuizQuerBeet.Views.MainPage"
              x:DataType="vm:MainPageViewModel"
              Title="{Binding Title}">
 
+    <Grid
+        Padding="30,0,30,0"
+        RowDefinitions="Auto,Auto,Auto"
+        Background="{StaticResource BackgroundBrush}">
+
+        <!-- Header -->
+        <templates:Header Grid.Row="0"
+                          VerticalOptions="StartAndExpand"
+                          Margin="0,42,0,0"
+                          Name="{Binding UserName}"/>
+
+        <!-- Info Banner -->
+        <templates:InfoBanner Grid.Row="1"
+                              VerticalOptions="Start"
+                              WidthRequest="330"
+                              HeightRequest="135"
+                              Margin="0,42,0,0"/>
+
+        <!-- Navigation Buttons -->
+        <Grid Grid.Row="2"
+            RowDefinitions="*,*"
+            ColumnDefinitions="*,*"
+            Margin="0,50,0,0"
+            HeightRequest="322">
+
+            <templates:NavigationButton
+                Grid.Row="0" Grid.Column="0"
+                Text="Lernen">
+                <templates:NavigationButton.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding NavigateToCategorieWithModeCommand}"
+                        CommandParameter="{x:Static enums:CategorieMode.Learn}"
+                        NumberOfTapsRequired="1"
+                        />
+                </templates:NavigationButton.GestureRecognizers>
+            </templates:NavigationButton>
+
+            <templates:NavigationButton
+                Grid.Row="0" Grid.Column="1"
+                Text="Testen">
+                <templates:NavigationButton.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding NavigateToCategorieWithModeCommand}"
+                        CommandParameter="{x:Static enums:CategorieMode.Quiz}"
+                        NumberOfTapsRequired="1"
+                        />
+                </templates:NavigationButton.GestureRecognizers>
+            </templates:NavigationButton>
+
+            <templates:NavigationButton
+                Grid.Row="1" Grid.Column="0"
+                Text="Neues Quiz">
+                <templates:NavigationButton.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding CreateNewQuizCommand}"/>
+                </templates:NavigationButton.GestureRecognizers>
+            </templates:NavigationButton>
+
+            <templates:NavigationButton
+                Grid.Row="1" Grid.Column="1"
+                Text="Neue Kategorie">
+                <templates:NavigationButton.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding CreateNewCategorieCommand}"/>
+                </templates:NavigationButton.GestureRecognizers>
+            </templates:NavigationButton>
+
+        </Grid>
+
+    </Grid>
 </ContentPage>
