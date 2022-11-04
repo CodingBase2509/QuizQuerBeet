@@ -90,6 +90,9 @@
 	  <MauiXaml Update="Views\Templates\QQBFrame.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Templates\Header.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -109,6 +112,8 @@
 	  <None Remove="Resources\Images\statistic.svg" />
 	  <None Remove="Resources\Images\x.svg" />
 	  <None Remove="Views\Templates\MainPage\" />
+	  <None Remove="Resources\Images\plus.svg" />
+	  <None Remove="Resources\Images\quit.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -122,6 +127,8 @@
 	  <MauiImage Include="Resources\Images\check.svg" />
 	  <MauiImage Include="Resources\Images\home.svg" />
 	  <MauiImage Include="Resources\Images\statistic.svg" />
+	  <MauiImage Include="Resources\Images\quit.svg" />
+	  <MauiImage Include="Resources\Images\plus.svg" />
 	  <MauiImage Include="Resources\Images\quit.svg" />
 	</ItemGroup>
 </Project>
