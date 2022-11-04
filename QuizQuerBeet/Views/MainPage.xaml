@@ -35,47 +35,27 @@
 
             <templates:NavigationButton
                 Grid.Row="0" Grid.Column="0"
-                Text="Lernen">
-                <templates:NavigationButton.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding NavigateToCategorieWithModeCommand}"
-                        CommandParameter="{x:Static enums:CategorieMode.Learn}"
-                        NumberOfTapsRequired="1"
-                        />
-                </templates:NavigationButton.GestureRecognizers>
-            </templates:NavigationButton>
+                Text="Lernen"
+                Command="{Binding NavigateToCategorieWithModeCommand}"
+                CommandParameter="{x:Static enums:CategorieMode.Learn}"/>
 
             <templates:NavigationButton
                 Grid.Row="0" Grid.Column="1"
-                Text="Testen">
-                <templates:NavigationButton.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding NavigateToCategorieWithModeCommand}"
-                        CommandParameter="{x:Static enums:CategorieMode.Quiz}"
-                        NumberOfTapsRequired="1"
-                        />
-                </templates:NavigationButton.GestureRecognizers>
-            </templates:NavigationButton>
+                Text="Testen"
+                Command="{Binding NavigateToCategorieWithModeCommand}"
+                CommandParameter="{x:Static enums:CategorieMode.Quiz}"/>
 
             <templates:NavigationButton
                 Grid.Row="1" Grid.Column="0"
-                Text="Neues Quiz">
-                <templates:NavigationButton.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding CreateNewQuizCommand}"/>
-                </templates:NavigationButton.GestureRecognizers>
-            </templates:NavigationButton>
+                Text="Neues Quiz"
+                Command="{Binding CreateNewQuizCommand}"/>
 
             <templates:NavigationButton
                 Grid.Row="1" Grid.Column="1"
-                Text="Neue Kategorie">
-                <templates:NavigationButton.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding CreateNewCategorieCommand}"/>
-                </templates:NavigationButton.GestureRecognizers>
-            </templates:NavigationButton>
-
+                Text="Neue Kategorie"
+                Command="{Binding CreateNewCategorieCommand} "/>
         </Grid>
+        <!---->
 
     </Grid>
 </ContentPage>

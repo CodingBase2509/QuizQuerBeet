@@ -4,30 +4,32 @@
              x:Name="this"
              x:Class="QuizQuerBeet.Views.Templates.MainPage.NavigationButton">
 
-    <Frame
+    <Button
         BindingContext="{x:Reference this}"
         HeightRequest="146"
         WidthRequest="146"
         CornerRadius="25"
         Padding="10"
-        HasShadow="True"
         BorderColor="{StaticResource Primary}"
-        BackgroundColor="{StaticResource Primary}">
+        BackgroundColor="{StaticResource Primary}"
+        Text="{Binding Text}"
+        Command="{Binding Command}"
+        CommandParameter="{Binding CommandParameter}">
 
-        <Frame.Shadow>
+        <Button.Shadow>
             <Shadow
                 Brush="{StaticResource PrimaryColorBrush}"
                 Offset="3,5"
                 Radius="5"
                 Opacity="0.4"/>
-        </Frame.Shadow>
+        </Button.Shadow>
 
-        <Label
+        <!--<Label
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
             Style="{StaticResource LargeLabelDefault}"
-            Text="{Binding Text}"/>
+            Text="{Binding Text}"/>-->
 
-    </Frame>
+    </Button>
 </ContentView>
 
