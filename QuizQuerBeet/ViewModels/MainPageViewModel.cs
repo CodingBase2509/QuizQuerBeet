@@ -15,7 +15,7 @@ public sealed partial class MainPageViewModel: ViewModelBase
     [RelayCommand]
     public static async Task NavigateToCategorieWithModeAsync(CategorieMode mode)
     {
-        await Shell.Current.GoToAsync($"//categories?mode={mode}");
+        await Shell.Current.GoToAsync($"//categories?mode={(int)mode}");
     }
 
     [RelayCommand]
