@@ -3,33 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Name="this"
              x:Class="QuizQuerBeet.Views.Templates.MainPage.NavigationButton">
-
-    <Button
-        BindingContext="{x:Reference this}"
+    <Frame
         HeightRequest="146"
         WidthRequest="146"
         CornerRadius="25"
         Padding="10"
         BorderColor="{StaticResource Primary}"
-        BackgroundColor="{StaticResource Primary}"
-        Text="{Binding Text}"
-        Command="{Binding Command}"
-        CommandParameter="{Binding CommandParameter}">
+        BackgroundColor="{StaticResource Primary}">
 
-        <Button.Shadow>
-            <Shadow
-                Brush="{StaticResource PrimaryColorBrush}"
-                Offset="3,5"
-                Radius="5"
-                Opacity="0.4"/>
-        </Button.Shadow>
+        <Grid>
+            <Button
+                BindingContext="{x:Reference this}"
+                ZIndex="2"
+                BackgroundColor="Transparent"
+                Command="{Binding Command}"
+                CommandParameter="{Binding CommandParameter}">
 
-        <!--<Label
-            VerticalTextAlignment="Center"
-            HorizontalTextAlignment="Center"
-            Style="{StaticResource LargeLabelDefault}"
-            Text="{Binding Text}"/>-->
+                <Button.Shadow>
+                    <Shadow
+                        Brush="{StaticResource PrimaryColorBrush}"
+                        Offset="3,5"
+                        Radius="5"
+                        Opacity="0.4"/>
+                </Button.Shadow>
+            </Button>
 
-    </Button>
+            <Label
+                ZIndex="1"
+                BindingContext="{x:Reference this}"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource LargeLabelDefault}"
+                Text="{Binding Text}"/>
+        </Grid>
+
+    </Frame>
 </ContentView>
 
