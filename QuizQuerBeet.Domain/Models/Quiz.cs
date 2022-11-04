@@ -22,6 +22,6 @@ public class Quiz: IIdentifiable
     /// <summary>
     /// The <see cref="QuizQuerBeet.Domain.Models.Topic"/> where the <see cref="Quiz"/> belongs to
     /// </summary>
-    public Topic Topic { get; set; }
+    public Category Category { get; set; }
 
 }

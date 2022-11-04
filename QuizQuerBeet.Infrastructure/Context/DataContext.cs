@@ -4,7 +4,7 @@ namespace QuizQuerBeet.Infrastructure.Context;
 
 public class DataContext: DbContext
 {
-    public DbSet<Topic>? Topics { get; set; }
+    public DbSet<Category>? Categories { get; set; }
 
     public DbSet<Quiz>? Quizzes { get; set; }
 

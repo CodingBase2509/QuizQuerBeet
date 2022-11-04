@@ -2,7 +2,7 @@
 
 public interface IUnitOfWork
 {
-    ITopicRepository Topics { get; }
+    ICategoryRepository Categories { get; }
     IQuizRepository Quizzes { get; }
     IQuestionRepository Questions { get; }
     IAnswerRepository Answers { get; }

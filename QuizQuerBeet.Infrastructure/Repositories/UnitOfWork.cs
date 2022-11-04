@@ -3,13 +3,13 @@
 internal sealed class UnitOfWork : IUnitOfWork
 {
     private readonly DataContext _dataContext;
-    private readonly ITopicRepository _topicsRepository;
+    private readonly ICategoryRepository _categoryRepository;
     private readonly IQuizRepository _quizRepository;
     private readonly IQuestionRepository _questionRepository;
     private readonly IAnswerRepository _answerRepository;
     private readonly IStatisticRepository _statisticRepository;
 
-    public ITopicRepository Topics => _topicsRepository;
+    public ICategoryRepository Categories => _categoryRepository;
 
     public IQuizRepository Quizzes => _quizRepository;
 
@@ -19,10 +19,10 @@ internal sealed class UnitOfWork : IUnitOfWork
 
     public IStatisticRepository Statistics => _statisticRepository;
 
-    public UnitOfWork(DataContext dataContext, ITopicRepository topics, IQuizRepository quiz, IQuestionRepository question, IAnswerRepository answer, IStatisticRepository statistic)
+    public UnitOfWork(DataContext dataContext, ICategoryRepository category, IQuizRepository quiz, IQuestionRepository question, IAnswerRepository answer, IStatisticRepository statistic)
     {
         _dataContext = dataContext;
-        _topicsRepository = topics;
+        _categoryRepository = category;
         _quizRepository = quiz;
         _questionRepository = question;
         _answerRepository = answer;
