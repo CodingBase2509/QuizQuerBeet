@@ -14,7 +14,7 @@ public partial class Header : ContentView
 
     public string Name
     {
-        get => (string)GetValue(NameProperty);
+        get => GetValue(NameProperty) as string;
         set => SetValue(NameProperty, value);
     }
 
