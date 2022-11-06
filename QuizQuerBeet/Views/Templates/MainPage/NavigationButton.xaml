@@ -4,8 +4,10 @@
              x:Name="this"
              x:Class="QuizQuerBeet.Views.Templates.MainPage.NavigationButton">
     <Frame
-        HeightRequest="146"
-        WidthRequest="146"
+        MinimumHeightRequest="130"
+        MaximumHeightRequest="160"
+        MinimumWidthRequest="130"
+        MaximumWidthRequest="160"
         CornerRadius="25"
         Padding="10"
         BorderColor="{StaticResource Primary}"
