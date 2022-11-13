@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
@@ -30,8 +30,9 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <EnableCodeSigning>false</EnableCodeSigning>
+	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -39,12 +40,14 @@
 		<MauiIcon Include="Resources\AppIcon\qqbicontest.svg" BaseSize="130,130" />
 
 		<!-- Splash Screen -->	
-		<MauiSplashScreen Include="Resources\Splash\qqbsplash.svg" BaseSize="390,844" />
+		<MauiSplashScreen Include="Resources\Splash\qqbsplash.svg" Resize="True" />
 
 		<MauiFont Include="Resources\Fonts\*" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		<MauiIcon Include="Resources\AppIcon\qqbicontest.svg" />
+		<MauiIcon Include="Resources\AppIcon\qqbiconandroid.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -52,6 +55,7 @@
 	  <Folder Include="ViewModels\Templates\" />
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="Views\Templates\MainPage\" />
+	  <Folder Include="Views\Templates\Categories\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -93,6 +97,9 @@
 	  <MauiXaml Update="Views\Templates\Header.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Templates\Categories\CategorieCard.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -114,6 +121,9 @@
 	  <None Remove="Views\Templates\MainPage\" />
 	  <None Remove="Resources\Images\plus.svg" />
 	  <None Remove="Resources\Images\quit.svg" />
+	  <None Remove="Views\Templates\Categories\" />
+	  <None Remove="Resources\AppIcon\qqbicontest.svg" />
+	  <None Remove="Resources\AppIcon\qqbiconandroid.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
