@@ -8,36 +8,36 @@ public sealed class ShellService
 		await Shell.Current.GoToAsync(destination, true);
 	}
 
-	public static async Task GoToCategories(CategorieMode mode)
+	public static async Task GoToCategoriesAsync(CategorieMode mode)
 	{
 		await Shell.Current.GoToAsync($"//categories?mode={(int)mode}");
     }
 
-	public static async Task GoToQuizEdit(Guid id = default)
+	public static async Task GoToQuizEditAsync(Guid id = default)
 	{
 		await Shell.Current.GoToAsync($"quizEditing?id={id.ToString()}");
 	}
 
-	public static async Task GoToQuestionEdit(Guid id = default)
+	public static async Task GoToQuestionEditasync(Guid id = default)
 	{
         await Shell.Current.GoToAsync($"questionEditing?id={id.ToString()}");
     }
     #endregion
 
     #region Popups
-    public static async Task DisplayAlert(string title, string message)
+    public static async Task DisplayAlertAsync(string title, string message)
 	{
 		await Shell.Current.DisplayAlert(title, message, "Ok");
 	}
 
-	public static async Task<string> DisplayActionSheet(string title, string message,params string[] buttons)
+	public static async Task<string> DisplayActionSheetAsync(string title, string message,params string[] buttons)
 	{
 		return await Shell.Current.DisplayActionSheet(title, message, null, buttons);
 	}
     #endregion
 
     #region Aditional stuff
-    public static async Task<Category> AddCategorie(IUnitOfWork unitOfWork)
+    public static async Task<Category> AddCategorieAsync(IUnitOfWork unitOfWork)
 	{
         var categorieName = await Shell.Current.DisplayPromptAsync("Neue Categorie anlegen",
                 "Wie soll die neue Kategorie heißen?", "Ok", "Abbrechen",
