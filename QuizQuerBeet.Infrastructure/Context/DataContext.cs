@@ -20,6 +20,11 @@ public class DataContext: DbContext
         this.Database.Migrate();
 	}
 
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    optionsBuilder.UseSqlite();
+    //}
+
     protected override void ConfigureConventions(ModelConfigurationBuilder builder)
     {
         builder.Properties<DateOnly>()
@@ -31,4 +36,3 @@ public class DataContext: DbContext
             .HaveColumnType("date");
     }
 }
-
