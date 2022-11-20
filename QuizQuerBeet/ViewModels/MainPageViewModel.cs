@@ -1,6 +1,4 @@
-﻿using QuizQuerBeet.Domain.Enums;
-
-namespace QuizQuerBeet.ViewModels;
+﻿namespace QuizQuerBeet.ViewModels;
 
 public sealed partial class MainPageViewModel: ViewModelBase
 {
