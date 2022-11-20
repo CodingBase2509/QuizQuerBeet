@@ -9,6 +9,7 @@
     </Style>
 
     <Style TargetType="TabBar" x:Key="TabbarDefault">
+        <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource Secondary}"/>
         <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource Secondary}"/>
         <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource TextLight}" />
         <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
@@ -18,7 +19,7 @@
     <Style TargetType="Label" x:Key="LabelDefault">
         <Setter Property="TextColor" Value="{StaticResource TextLight}"/>
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontFamily" Value="InterMedium"/>
+        <Setter Property="FontFamily" Value="InterSB"/>
     </Style>
 
     <Style TargetType="Label" x:Key="LargeLabelDefault" BasedOn="{StaticResource LabelDefault}">
