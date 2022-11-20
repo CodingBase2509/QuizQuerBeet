@@ -36,14 +36,25 @@ internal class GenericRepository<T>: IGenericRepository<T> where T : class, IIde
     {
         await _dataContext.Set<T>().AddAsync(entity);
     }
+    #endregion
 
-    public async Task AddRangeAsync(IEnumerable<T> entities)
+    #region Update
+    public async Task<bool> UpdateAsync(T entity)
     {
-        await _dataContext.Set<T>().AddRangeAsync(entities);
+        var ent = await GetByIdAsync(entity.Id);
+
+        if (ent is not null)
+        {
+            ent = entity;
+            var op = _dataContext.Set<T>().Update(ent);
+            return op.State == EntityState.Modified;
+        }
+        else
+            return false;
     }
     #endregion
 
-    #region Remove
+    #region Delete
     public async Task<bool> RemoveAsync(Guid id)
     {
         var entity = await GetByIdAsync(id);
@@ -69,83 +80,6 @@ internal class GenericRepository<T>: IGenericRepository<T> where T : class, IIde
         else
             return false;
     }
-    // -------------------------------------------------
-    public async Task<bool> RemoveRangeAsync(IEnumerable<Guid> ids)
-    {
-        List<bool> states = new();
-
-        foreach (var id in ids)
-        {
-            states.Add(await RemoveAsync(id));
-        }
-
-        return states.All(st => st == true);
-    }
-
-    public async Task<bool> RemoveRangeAsync(IEnumerable<T> entities)
-    {
-        List<bool> states = new();
-
-        foreach (var ent in entities)
-        {
-            states.Add(await RemoveAsync(ent));
-        }
-
-        return states.All(st => st == true);
-    }
-    #endregion
-
-    #region Update
-    public async Task<bool> UpdateAsync(Guid id)
-    {
-        var entity = await GetByIdAsync(id);
-
-        if (entity is not null)
-        {
-            var op = _dataContext.Set<T>().Update(entity);
-            return op.State == EntityState.Modified;
-        }
-        else
-            return false;
-    }
-
-    public async Task<bool> UpdateAsync(T entity)
-    {
-        var ent = await GetByIdAsync(entity.Id);
-
-        if (ent is not null)
-        {
-            var op = _dataContext.Set<T>().Update(ent);
-            return op.State == EntityState.Modified;
-        }
-        else
-            return false;
-    }
-    // ---------------------------------------------------
-    public async Task<bool> UpdateRangeAsync(IEnumerable<Guid> ids)
-    {
-        List<bool> states = new();
-
-        foreach (var id in ids)
-        {
-            states.Add(await UpdateAsync(id));
-        }
-
-        return states.All(st => st == true);
-    }
-
-    public async Task<bool> UpdateRangeAsync(IEnumerable<T> entities)
-    {
-        List<bool> states = new();
-
-        foreach (var ent in entities)
-        {
-            states.Add(await UpdateAsync(ent));
-        }
-
-        return states.All(st => st == true);
-    }
-
     #endregion
 }
 
