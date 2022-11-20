@@ -2,6 +2,9 @@
 global using QuizQuerBeet.Views;
 global using QuizQuerBeet.ViewModels;
 
+global using QuizQuerBeet.Domain.Models;
+global using QuizQuerBeet.Domain.Enums;
+
 global using QuizQuerBeet.Infrastructure.Contracts;
 
 global using System.Linq.Expressions;
