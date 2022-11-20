@@ -1,18 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:QuizQuerBeet.Views.Templates"
+             xmlns:catTemplates="clr-namespace:QuizQuerBeet.Views.Templates.Categories"
              xmlns:vm="clr-namespace:QuizQuerBeet.ViewModels"
+             xmlns:models="clr-namespace:QuizQuerBeet.Domain.Models;assembly=QuizQuerBeet.Domain"
              x:Class="QuizQuerBeet.Views.CategorieView"
              x:DataType="vm:CategorieViewModel"
+             x:Name="this"
              Title="{Binding Title}">
+
     <Grid
+        Padding="0,0,0,0"
+        RowDefinitions="Auto,Auto,*"
         Background="{StaticResource BackgroundBrush}">
 
-        <Label
-            Style="{StaticResource LabelDefault}"
-            Text="Kategorien"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"/>
+        <!-- Category Header -->
+        <VerticalStackLayout
+            Margin="30,0,30,0">
+            <!-- Header -->
+            <templates:Header Grid.Row="0"
+                          Margin="0,42,0,0"
+                          Text="Kategorien">
+
+                <ImageButton
+                    Source="plus"
+                    Aspect="Fill"
+                    WidthRequest="30"
+                    HeightRequest="30"
+                    Command="{Binding AddElementCommand}"/>
+
+            </templates:Header>
+
+            <!-- Categories -->
+            <Grid Grid.Row="1"
+                Margin="0,6,0,0"
+                HeightRequest="35">
+
+                <CollectionView
+                    VerticalScrollBarVisibility="Never"
+                    HorizontalScrollBarVisibility="Never"
+                    ItemsUpdatingScrollMode="KeepLastItemInView"
+                    ItemsSource="{Binding Categories}"
+                    SelectionMode="Single"
+                    SelectedItem="{Binding SelectedCategory}">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"
+                                       SnapPointsAlignment="Center"
+                                       SnapPointsType="None"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Category">
+
+                            <catTemplates:CategorieCard
+                            Category="{Binding .}"
+                            Command="{Binding Source={RelativeSource
+                                              AncestorType={x:Type vm:CategorieViewModel}},
+                                              Path=ChangeCategoryCommand}"
+                            CommandParameter="{Binding .}">
+                            </catTemplates:CategorieCard>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </Grid>
+        </VerticalStackLayout>
+
+        <!-- Quizzes -->
+        <CollectionView Grid.Row="2"
+            Margin="0,30,0,12"
+            ItemsUpdatingScrollMode="KeepItemsInView"
+            ItemsSource="{Binding Quizzes}"
+            SelectionMode="None">
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Quiz">
+
+                    <Grid>
+                        <templates:QQBFrame
+                            Margin="30,14,30,14"
+                            MinimumHeightRequest="120"
+                            MaximumHeightRequest="140">
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                Style="{StaticResource LargeLabelDefault}"
+                                Text="{Binding Name}"/>
+                        </templates:QQBFrame>
+                    </Grid>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
     </Grid>
 </ContentPage>
