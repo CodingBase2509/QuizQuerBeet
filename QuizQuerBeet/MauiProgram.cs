@@ -24,14 +24,14 @@ public static class MauiProgram
 
 		builder.Services.AddDbContext<DataContext>(options =>
 		{
-            var appPath = Path.Combine(FileSystem.AppDataDirectory, "ExamTrainer");
+			var appPath = Path.Combine(FileSystem.AppDataDirectory, "ExamTrainer");
 
-            if (!Directory.Exists(appPath))
-                Directory.CreateDirectory(appPath);
+			if (!Directory.Exists(appPath))
+				Directory.CreateDirectory(appPath);
 
-            var DbPath = Path.Combine(appPath, "ExamTrainer.db");
-            options.UseSqlite($"Data Source={DbPath}");
-        });
+			var DbPath = Path.Combine(appPath, "ExamTrainer.db");
+			options.UseSqlite($"Data Source={DbPath}");
+		});
 
 		builder.Services.AddRepositories();
 
