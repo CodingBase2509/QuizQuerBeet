@@ -18,16 +18,7 @@ public class DataContext: DbContext
         :base(options)
 	{
         this.Database.EnsureCreated();
-        if (Database.GetPendingMigrations().Any())
-        {
-            this.Database.Migrate();
-        }
 	}
-
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //{
-    //    optionsBuilder.UseSqlite();
-    //}
 
     protected override void ConfigureConventions(ModelConfigurationBuilder builder)
     {
