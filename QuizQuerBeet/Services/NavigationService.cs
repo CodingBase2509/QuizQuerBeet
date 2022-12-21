@@ -15,8 +15,8 @@ public sealed class ShellService
 
 	public static async Task GoToQuizEditAsync(Guid id = default)
 	{
-		await Shell.Current.GoToAsync($"quizEditing?id={id.ToString()}");
-	}
+        await Shell.Current.GoToAsync($"quizEditing?id={id.ToString()}");
+    }
 
 	public static async Task GoToQuestionEditasync(Guid id = default)
 	{
