@@ -18,7 +18,10 @@ public class DataContext: DbContext
         :base(options)
 	{
         this.Database.EnsureCreated();
-        this.Database.Migrate();
+        if (Database.GetPendingMigrations().Any())
+        {
+            this.Database.Migrate();
+        }
 	}
 
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
