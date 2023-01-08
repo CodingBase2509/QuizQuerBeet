@@ -62,7 +62,7 @@ public sealed partial class CategorieViewModel : ViewModelBase
     }
 
     [RelayCommand]
-    public void ChangeCategory(Category newSelectedCategory)
+    public async Task ChangeCategory(Category newSelectedCategory)
     {
         if (Equals(newSelectedCategory, this.SelectedCategory))
             return;
@@ -70,6 +70,8 @@ public sealed partial class CategorieViewModel : ViewModelBase
         this.SelectedCategory = newSelectedCategory;
         if (this.SelectedCategory.Quizzes is null)
             this.SelectedCategory.Quizzes = new List<Quiz>();
+
+        this.SelectedCategory.Quizzes = await this.unitOfWork.Quizzes.FindAsync(q => Equals(newSelectedCategory, q.Category));
 
         this.Quizzes = new(this.SelectedCategory.Quizzes);
     }
@@ -80,82 +82,13 @@ public sealed partial class CategorieViewModel : ViewModelBase
     {
         var categorie = await ShellService.AddCategorieAsync(this.unitOfWork);
 
+        if (categorie is default(Category))
+            return;
+
         await this.unitOfWork.Categories.AddAsync(categorie);
         await this.unitOfWork.SaveChangesAsync();
 
         this.Categories = new(await this.unitOfWork.Categories.GetAllAsync());
-    }
-
-    static ObservableCollection<Category> CreateTestData()
-    {
-        return new ObservableCollection<Category>()
-        {
-            new Category(){ Id = Guid.NewGuid(), Name = "Testen", Quizzes = new List<Quiz>() },
-            new Category(){ Id = Guid.NewGuid(), Name = "Kochen", Quizzes = new List<Quiz>() },
-            new Category(){ Id = Guid.NewGuid(), Name = "Mathematik", Quizzes = new List<Quiz>()
-            {
-                new Quiz()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Lineare Algebra",
-                    Category = null,
-                    Questions = new List<Question>()
-                },
-                new Quiz()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Stochastik",
-                    Category = null,
-                    Questions = new List<Question>()
-                },
-                new Quiz()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Exponentioal Funktionen",
-                    Category = null,
-                    Questions = new List<Question>()
-                },
-                new Quiz()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Testen 1234",
-                    Category = null,
-                    Questions = new List<Question>()
-                },
-                new Quiz()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Lineare Algebra",
-                    Category = null,
-                    Questions = new List<Question>()
-                },
-                new Quiz()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Stochastik",
-                    Category = null,
-                    Questions = new List<Question>()
-                },
-                new Quiz()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Exponentioal Funktionen",
-                    Category = null,
-                    Questions = new List<Question>()
-                },
-                new Quiz()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Testen 1234",
-                    Category = null,
-                    Questions = new List<Question>()
-                },
-            }},
-            new Category(){ Id = Guid.NewGuid(), Name = "Sportarten", Quizzes = new List<Quiz>() },
-            new Category(){ Id = Guid.NewGuid(), Name = "Physik", Quizzes = new List<Quiz>() },
-            new Category(){ Id = Guid.NewGuid(), Name = "Informatik", Quizzes = new List<Quiz>() },
-
-        };
     }
     #endregion
 }

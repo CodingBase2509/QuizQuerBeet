@@ -19,7 +19,7 @@
     <Style TargetType="Label" x:Key="LabelDefault">
         <Setter Property="TextColor" Value="{StaticResource TextLight}"/>
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontFamily" Value="InterSB"/>
+        <Setter Property="FontFamily" Value="InterMedium"/>
     </Style>
 
     <Style TargetType="Label" x:Key="LargeLabelDefault" BasedOn="{StaticResource LabelDefault}">
