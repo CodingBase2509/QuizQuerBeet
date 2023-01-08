@@ -8,6 +8,18 @@ public sealed class ShellService
 		await Shell.Current.GoToAsync(destination, true);
 	}
 
+    public static async Task GoBackAsync(int stepsBack = 1)
+    {
+        string backsteps = "..";
+
+        for (int i = 1; i < stepsBack; i++)
+        {
+            backsteps += "/..";
+        }
+
+        await Shell.Current.GoToAsync(backsteps);
+    }
+
 	public static async Task GoToCategoriesAsync(CategorieMode mode)
 	{
 		await Shell.Current.GoToAsync($"//categories?mode={(int)mode}");
