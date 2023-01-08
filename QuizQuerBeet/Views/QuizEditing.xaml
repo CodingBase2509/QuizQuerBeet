@@ -1,14 +1,199 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:QuizQuerBeet.Views.Templates"
+             xmlns:models="clr-namespace:QuizQuerBeet.Domain.Models;assembly=QuizQuerBeet.Domain"
              xmlns:vm="clr-namespace:QuizQuerBeet.ViewModels"
              x:Class="QuizQuerBeet.Views.QuizEditing"
              x:DataType="vm:QuizEditingViewModel"
              Title="{Binding Title}">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <Grid
+        Padding="0,0,0,0"
+        RowDefinitions="Auto,*"
+        Background="{StaticResource BackgroundBrush}">
+
+        <!-- Site-Header -->
+        <VerticalStackLayout Grid.Row="0"
+            Margin="30,0,30,0">
+            <!-- Header -->
+            <templates:Header
+                          Margin="0,42,0,0"
+                          Text="Neues Quiz">
+                <HorizontalStackLayout
+                    Margin="0,0,10,0">
+
+                    <ImageButton
+                        Margin="30,0"
+                        Source="quit"
+                        Aspect="Fill"
+                        WidthRequest="38"
+                        HeightRequest="38"
+                        Command="{Binding DeleteAndGoBackCommand}"/>
+
+                    <ImageButton
+                        Source="check"
+                        Aspect="Fill"
+                        WidthRequest="25"
+                        HeightRequest="21"
+                        Command="{Binding SaveAndGoBackCommand}"/>
+
+                </HorizontalStackLayout>
+            </templates:Header>
+
+            <!-- Inputs -->
+            <templates:InputBorder
+                HeightRequest="40"
+                Margin="0,18,0,0"
+                HorizontalOptions="Start"
+                WidthRequest="{Binding InputWith}"
+                MinimumWidthRequest="220">
+
+                <Entry
+                    Placeholder="Quiz Name hier eingeben"
+                    PlaceholderColor="{StaticResource Gray400}"
+                    ClearButtonVisibility="WhileEditing"
+                    TextColor="{StaticResource Primary}"
+                    BackgroundColor="Transparent"
+                    Keyboard="Text"
+                    Text="{Binding NewQuiz.Name}"/>
+            </templates:InputBorder>
+
+            <templates:InputBorder
+                HeightRequest="40"
+                Margin="0,9,0,0"
+                HorizontalOptions="Start"
+                WidthRequest="{Binding InputWith}"
+                MinimumWidthRequest="220">
+
+                <Picker
+                    ItemsSource="{Binding Categories}"
+                    SelectedItem="{Binding SelectedCategory}"
+                    ItemDisplayBinding="{Binding Name}"
+                    Title="Kategorie auswählen"/>
+            </templates:InputBorder>
+
+        </VerticalStackLayout>
+
+        <!-- Data -->
+        <CollectionView Grid.Row="1"
+                        Margin="0,30,0,12"
+                        Footer="{Binding .}"
+                        ItemsUpdatingScrollMode="KeepItemsInView"
+                        ItemsSource="{Binding Questions}"
+                        SelectionMode="None">
+            <!--Question-Card-->
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Question">
+                    <Grid>
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource
+                                                            AncestorType={x:Type vm:QuizEditingViewModel}},
+                                                            Path=OpenContextmenuCommand}"
+                                                  CommandParameter="{Binding .}"
+                                                  Buttons="Secondary"/>
+                        </Grid.GestureRecognizers>
+
+                        <templates:QQBFrame
+                            Margin="30,14,30,14"
+                            MinimumHeightRequest="120"
+                            MaximumHeightRequest="180">
+
+                            <!--The Question-->
+                            <Grid RowDefinitions="Auto, Auto"
+                                  Margin="10,10">
+                                <Label Grid.Row="0"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Start"
+                                    Style="{StaticResource LabelDefault}"
+                                    Text="{Binding Value}"/>
+
+                                <!--The Collection View with the Answers-->
+                                <CollectionView Grid.Row="1"
+                                                 Margin="0,5,0,0"
+                                                 ItemsSource="{Binding Answers}"
+                                                 HorizontalScrollBarVisibility="Never"
+                                                 VerticalScrollBarVisibility="Never">
+
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical"
+                                                         VerticalItemSpacing="10"
+                                                         HorizontalItemSpacing="10"
+                                                         Span="2"/>
+
+
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="models:Answer">
+                                            <Grid ColumnDefinitions="Auto, *">
+
+                                                <Ellipse Grid.Column="0"
+                                                             Margin="3"
+                                                             WidthRequest="10"
+                                                             HeightRequest="10"
+                                                             Fill="{StaticResource Secondary}"
+                                                             HorizontalOptions="Start"
+                                                             VerticalOptions="Start"/>
+
+                                                <Label Grid.Column="1"
+                                                           MaxLines="3"
+                                                           LineBreakMode="WordWrap"
+                                                           HorizontalTextAlignment="Start"
+                                                           VerticalTextAlignment="Start"
+                                                           Style="{StaticResource LabelDefault}"
+                                                           Text="{Binding Value}"/>
+
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                                <!-- Answers End -->
+                            </Grid>
+                        </templates:QQBFrame>
+                    </Grid>
+                    <!-- Question End -->
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <!-- List Footer -->
+            <CollectionView.FooterTemplate>
+                <DataTemplate>
+
+                    <Grid>
+                        <ImageButton
+                        Source="plus"
+                        Aspect="Fill"
+                        WidthRequest="25"
+                        HeightRequest="25"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Command="{Binding AddQuestionCommand}"/>
+                    </Grid>
+
+                </DataTemplate>
+            </CollectionView.FooterTemplate>
+
+            <!-- Empty View -->
+            <CollectionView.EmptyView>
+
+                <VerticalStackLayout>
+
+                    <Label
+                        Margin="0,10"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        Style="{StaticResource LargeLabelDefault}"
+                        TextColor="{StaticResource Primary}"
+                        Text="Neue Frage hinzufügen"/>
+
+                </VerticalStackLayout>
+
+            </CollectionView.EmptyView>
+
+        </CollectionView>
+
+    </Grid>
+
 </ContentPage>
