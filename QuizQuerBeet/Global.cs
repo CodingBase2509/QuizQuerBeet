@@ -9,6 +9,8 @@ global using QuizQuerBeet.Domain.Enums;
 global using QuizQuerBeet.Infrastructure.Contracts;
 
 global using System.Linq.Expressions;
+global using System.Collections.ObjectModel;
+global using System.Linq;
 
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
