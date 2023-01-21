@@ -8,5 +8,6 @@ public partial class CategorieView : ContentPage
 		BindingContext = vm;
 
 		this.NavigatingFrom += vm.OnNavigatingAway;
+		this.NavigatedTo += vm.OnNavigationTo;
 	}
 }

@@ -13,6 +13,7 @@ public sealed partial class QuizEditingViewModel : ViewModelBase
         set
         {
             id = new Guid(value);
+            this.loadData().Wait();
         }
     }
 
@@ -30,14 +31,11 @@ public sealed partial class QuizEditingViewModel : ViewModelBase
 
     public double InputWith => DeviceDisplay.MainDisplayInfo.Width * 0.22;
 
-    public double SwipeThreshold => DeviceDisplay.MainDisplayInfo.Width * 0.5;
-
     #endregion
 
     public QuizEditingViewModel(IUnitOfWork unitOfWork)
     {
         this.unitOfWork = unitOfWork;
-        this.loadData().Wait();
     }
 
     async Task loadData()
@@ -46,7 +44,14 @@ public sealed partial class QuizEditingViewModel : ViewModelBase
         this.Questions = new();
 
         if (this.id != Guid.Empty)
+        {
             this.NewQuiz = await unitOfWork.Quizzes.GetByIdAsync(id);
+            if (NewQuiz.Questions.Any())
+            {
+                this.Questions = new(this.NewQuiz.Questions);
+            }
+            this.SelectedCategory = this.NewQuiz.Category;
+        }
         else
         {
             this.NewQuiz = new()
@@ -61,11 +66,6 @@ public sealed partial class QuizEditingViewModel : ViewModelBase
 
     #region Commands
 
-    partial void OnSelectedCategoryChanged(Category value)
-    {
-        this.NewQuiz.Category = value;
-    }
-
     [RelayCommand]
     public async Task OpenContextmenuAsync(Question question)
     {
@@ -74,8 +74,7 @@ public sealed partial class QuizEditingViewModel : ViewModelBase
         switch (action)
         {
             case "Löschen":
-                await this.unitOfWork.Questions.RemoveAsync(question);
-                this.Questions = new (this.Questions.Where(q => !Equals(q.Id, question.Id)).ToList());
+                this.Questions = new(this.Questions.Where(q => !Equals(q.Id, question.Id)).ToList());
                 break;
             case "Bearbeiten":
                 await ShellService.GoToQuestionEditasync(question.Id);
@@ -101,15 +100,7 @@ public sealed partial class QuizEditingViewModel : ViewModelBase
     [RelayCommand]
     public async Task DeleteAndGoBackAsync()
     {
-        this.Questions.Clear();
-        this.NewQuiz = null;
-
-        if (this.SelectedCategory is not null)
-        this.SelectedCategory = null;
-
-        this.unitOfWork.Rollback();
         await ShellService.GoBackAsync();
-        
     }
 
     [RelayCommand]
@@ -127,13 +118,47 @@ public sealed partial class QuizEditingViewModel : ViewModelBase
             return;
         }
 
+        if (!Equals(this.NewQuiz.Category, this.SelectedCategory))
+        {
+            if (this.NewQuiz.Category is not null)
+            {
+                this.NewQuiz.Category.Quizzes = this.NewQuiz.Category.Quizzes.Where(q => q.Id != NewQuiz.Id).ToList();
+                await this.unitOfWork.Categories.UpdateAsync(this.NewQuiz.Category);
+            }
+
+            this.NewQuiz.Category = this.SelectedCategory;
+            if (!this.SelectedCategory.Quizzes.Contains(this.NewQuiz))
+                this.SelectedCategory.Quizzes = this.SelectedCategory.Quizzes.Append(this.NewQuiz).ToList();
+
+            if (await this.unitOfWork.Quizzes.GetByIdAsync(this.NewQuiz.Id) is null)
+            {
+                await this.unitOfWork.Quizzes.AddAsync(this.NewQuiz);
+                await this.unitOfWork.SaveChangesAsync();
+            }
+
+            await this.unitOfWork.Categories.UpdateAsync(this.SelectedCategory);
+        }
+
+        this.NewQuiz.Questions = new List<Question>(this.NewQuiz.Questions);
         foreach (var question in this.Questions)
         {
-            (this.NewQuiz.Questions as IList<Question>).Add(question);
-            await this.unitOfWork.Questions.AddAsync(question);
+            if (this.NewQuiz.Questions.Contains(question))
+            {
+                await this.unitOfWork.Questions.UpdateAsync(question);
+            }
+            else
+            {
+                (this.NewQuiz.Questions as List<Question>).Add(question);
+                await this.unitOfWork.Questions.AddAsync(question);
+            }
         }
-        await this.unitOfWork.Quizzes.AddAsync(this.NewQuiz);
+        foreach (var question in this.NewQuiz.Questions)
+        {
+            if (!this.Questions.Contains(question))
+                await this.unitOfWork.Questions.RemoveAsync(question);
+        }
 
+        await this.unitOfWork.Quizzes.UpdateAsync(this.NewQuiz);
 
         await this.unitOfWork.SaveChangesAsync();
         await ShellService.GoBackAsync();

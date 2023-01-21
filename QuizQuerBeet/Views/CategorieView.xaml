@@ -84,6 +84,15 @@
                             Margin="30,14,30,14"
                             MinimumHeightRequest="120"
                             MaximumHeightRequest="140">
+
+                            <templates:QQBFrame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource
+                                              AncestorType={x:Type vm:CategorieViewModel}},
+                                              Path=EditQuizCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </templates:QQBFrame.GestureRecognizers>
+
                             <Label
                                 HorizontalTextAlignment="Center"
                                 VerticalTextAlignment="Center"

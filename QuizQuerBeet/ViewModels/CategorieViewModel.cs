@@ -23,7 +23,7 @@ public sealed partial class CategorieViewModel : ViewModelBase
             OnPropertyChanged();
         }
     }
-    
+
     [ObservableProperty]
     public ObservableCollection<Category> categories;
 
@@ -38,13 +38,23 @@ public sealed partial class CategorieViewModel : ViewModelBase
     {
         this.unitOfWork = unitOfWork;
 
-        this.Categories = new(this.unitOfWork.Categories.GetAllAsync().GetAwaiter().GetResult());
+        //this.Categories = new(this.unitOfWork.Categories.GetAllAsync().GetAwaiter().GetResult());
     }
 
     #region Events
     public void OnNavigatingAway(object sender, NavigatingFromEventArgs eventArgs)
     {
         this.Mode = ((int)CategorieMode.None).ToString();
+    }
+
+    public async void OnNavigationTo(object sender, NavigatedToEventArgs eventArgs)
+    {
+        this.Categories = new(await this.unitOfWork.Categories.GetAllAsync());
+        if (this.SelectedCategory is not null)
+        {
+            this.SelectedCategory = await this.unitOfWork.Categories.GetByIdAsync(this.SelectedCategory.Id);
+            this.Quizzes = new(this.SelectedCategory.Quizzes);
+        }
     }
     #endregion
 
@@ -74,6 +84,12 @@ public sealed partial class CategorieViewModel : ViewModelBase
         this.SelectedCategory.Quizzes = await this.unitOfWork.Quizzes.FindAsync(q => Equals(newSelectedCategory, q.Category));
 
         this.Quizzes = new(this.SelectedCategory.Quizzes);
+    }
+
+    [RelayCommand]
+    public async Task EditQuizAsync(Quiz quiz)
+    {
+        await ShellService.GoToQuizEditAsync(quiz.Id);
     }
     #endregion
 
