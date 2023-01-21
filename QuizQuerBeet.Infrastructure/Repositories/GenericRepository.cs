@@ -41,16 +41,8 @@ internal class GenericRepository<T>: IGenericRepository<T> where T : class, IIde
     #region Update
     public async Task<bool> UpdateAsync(T entity)
     {
-        var ent = await GetByIdAsync(entity.Id);
-
-        if (ent is not null)
-        {
-            ent = entity;
-            var op = _dataContext.Set<T>().Update(ent);
-            return op.State == EntityState.Modified;
-        }
-        else
-            return false;
+        var op = _dataContext.Set<T>().Update(entity);
+        return op.State == EntityState.Modified;
     }
     #endregion
 
