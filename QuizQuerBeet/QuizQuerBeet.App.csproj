@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios16.1</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
@@ -31,10 +31,16 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
-	  <EnableCodeSigning>false</EnableCodeSigning>
+	  <EnableCodeSigning>False</EnableCodeSigning>
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios16.0|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios16.1|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\qqbicontest.svg" BaseSize="130,130" />
@@ -52,10 +58,10 @@
 
 	<ItemGroup>
 	  <Folder Include="Views\Templates\" />
-	  <Folder Include="ViewModels\Templates\" />
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="Views\Templates\MainPage\" />
 	  <Folder Include="Views\Templates\Categories\" />
+	  <Folder Include="Services\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -100,6 +106,9 @@
 	  <MauiXaml Update="Views\Templates\Categories\CategorieCard.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Templates\InputBorder.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -108,7 +117,6 @@
 
 	<ItemGroup>
 	  <None Remove="CommunityToolkit.Mvvm" />
-	  <None Remove="ViewModels\Templates\" />
 	  <None Remove="Resources\Images\" />
 	  <None Remove="Resources\Images\arrowleft.svg" />
 	  <None Remove="Resources\Images\arrowright.svg" />
@@ -124,6 +132,8 @@
 	  <None Remove="Views\Templates\Categories\" />
 	  <None Remove="Resources\AppIcon\qqbicontest.svg" />
 	  <None Remove="Resources\AppIcon\qqbiconandroid.svg" />
+	  <None Remove="Services\" />
+	  <None Remove="Resources\Images\trash.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -140,5 +150,6 @@
 	  <MauiImage Include="Resources\Images\quit.svg" />
 	  <MauiImage Include="Resources\Images\plus.svg" />
 	  <MauiImage Include="Resources\Images\quit.svg" />
+	  <MauiImage Include="Resources\Images\trash.svg" />
 	</ItemGroup>
 </Project>

@@ -1,15 +1,16 @@
-﻿using QuizQuerBeet.Domain.Enums;
-
-namespace QuizQuerBeet.ViewModels;
+﻿namespace QuizQuerBeet.ViewModels;
 
 public sealed partial class MainPageViewModel: ViewModelBase
 {
+    private readonly IUnitOfWork unitOfWork;
+
     [ObservableProperty]
     public string userName;
 
-    public MainPageViewModel()
+    public MainPageViewModel(IUnitOfWork unitOfWork)
     {
         this.UserName = "Fabian";
+        this.unitOfWork = unitOfWork;
     }
 
     [RelayCommand]
@@ -19,15 +20,15 @@ public sealed partial class MainPageViewModel: ViewModelBase
     }
 
     [RelayCommand]
-    public static async Task CreateNewCategorieAsync()
+    public async Task CreateNewCategorieAsync()
     {
-        await Shell.Current.DisplayAlert("WARNUNG", "Diese Seite wurde noch nicht implementiert", "Ok");
+        await ShellService.AddCategorieAsync(unitOfWork);
     }
 
     [RelayCommand]
     public static async Task CreateNewQuizAsync()
     {
-        await Shell.Current.DisplayAlert("WARNUNG", "Diese Seite wurde noch nicht implementiert", "Ok");
+        await ShellService.GoToQuizEditAsync();
     }
 
 }

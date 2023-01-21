@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:QuizQuerBeet.Views.Templates"
+             x:DataType="templates:Header"
+             x:Class="QuizQuerBeet.Views.Templates.Header"
+             x:Name="this">
+
+    <ContentView.ControlTemplate>
+        <ControlTemplate x:Name="HeaderControlTemplate">
+
+            <Grid>
+                <Label Grid.Column="0"
+                    BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Center"
+                    Style="{StaticResource HeaderLabel}"
+                    Text="{Binding Text}"/>
+
+                <ContentPresenter
+                    HorizontalOptions="End"/>
+
+            </Grid>
+        </ControlTemplate>
+    </ContentView.ControlTemplate>
+
+
+</ContentView>
+

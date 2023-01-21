@@ -6,6 +6,7 @@
     <Color x:Key="Primary">#242730</Color>
     <Color x:Key="Secondary">#A7DFF1</Color>
     <Color x:Key="SecondaryVariant">#8EB1C6</Color>
+    <Color x:Key="WhiteVariant">#A8B5BF</Color>
 
     <Color x:Key="TextLight">#E1E2E3</Color>
     <Color x:Key="TextDark">#242730</Color>

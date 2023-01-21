@@ -9,6 +9,7 @@
     </Style>
 
     <Style TargetType="TabBar" x:Key="TabbarDefault">
+        <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource Secondary}"/>
         <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource Secondary}"/>
         <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource TextLight}" />
         <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />

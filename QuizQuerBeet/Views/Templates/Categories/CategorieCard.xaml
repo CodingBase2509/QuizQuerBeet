@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizQuerBeet.Views.Templates.Categories.CategorieCard"
+             x:Name="this"
+             BackgroundColor="Transparent">
+
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="CommonStates">
+            <VisualState x:Name="Normal">
+                <VisualState.Setters>
+                    <Setter TargetName="this" Property="ContentView.BackgroundColor" Value="Transparent"/>
+                    <Setter TargetName="BackgroundGrid" Property="Grid.BackgroundColor" Value="Transparent"/>
+                    <Setter TargetName="CategoryButton" Property="Button.BackgroundColor" Value="Transparent"/>
+                    <Setter TargetName="CategoryLabel" Property="Label.BackgroundColor" Value="Transparent"/>
+                    <Setter TargetName="BackgroundRectangle" Property="Rectangle.BackgroundColor" Value="Transparent"/>
+                    <Setter TargetName="BackgroundRectangle" Property="Rectangle.Fill" Value="{StaticResource WhiteVariant}"/>
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:Name="Selected">
+                <VisualState.Setters>
+                    <Setter TargetName="this" Property="ContentView.BackgroundColor" Value="Transparent"/>
+                    <Setter TargetName="BackgroundGrid" Property="Grid.BackgroundColor" Value="Transparent"/>
+                    <Setter TargetName="CategoryButton" Property="Button.BackgroundColor" Value="Transparent"/>
+                    <Setter TargetName="CategoryLabel" Property="Label.BackgroundColor" Value="Transparent"/>
+                    <Setter TargetName="BackgroundRectangle" Property="Rectangle.BackgroundColor" Value="Transparent"/>
+                    <Setter TargetName="BackgroundRectangle" Property="Rectangle.Fill" Value="{StaticResource SecondaryVariant}"/>
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+
+    <Grid
+        x:Name="BackgroundGrid"
+        BindingContext="{x:Reference this}"
+        BackgroundColor="Transparent"
+        Margin="0,0,10,0">
+
+        <Rectangle
+            x:Name="BackgroundRectangle"
+            BindingContext="{x:Reference this}"
+            ZIndex="0"
+            HeightRequest="35"
+            Stroke="Black"
+            StrokeThickness="1"
+            RadiusX="20"
+            RadiusY="20"
+            Fill="{DynamicResource WhiteVariant}"/>
+
+        <Button
+            x:Name="CategoryButton"
+            BindingContext="{x:Reference this}"
+            ZIndex="2"
+            BackgroundColor="Transparent"
+            HeightRequest="35"
+            Command="{Binding Command}"
+            CommandParameter="{Binding CommandParameter}"/>
+
+
+        <Label
+            x:Name="CategoryLabel"
+            BindingContext="{x:Reference this}"
+            ZIndex="1"
+            Margin="10,0"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            Style="{StaticResource LabelDefault}"
+            TextColor="{StaticResource Primary}"
+            Text="{Binding Category.Name}"/>
+
+    </Grid>
+
+</ContentView>
+

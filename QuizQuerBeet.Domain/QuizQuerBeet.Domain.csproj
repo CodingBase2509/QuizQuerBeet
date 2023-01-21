@@ -8,12 +8,10 @@
 
   <ItemGroup>
     <Folder Include="Enums\" />
-    <Folder Include="Events\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="CommunityToolkit.Mvvm" />
-    <None Remove="Events\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />

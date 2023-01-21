@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style name="SplashTheme" parent="Maui.SplashTheme">
+	    <item name="android:windowSplashScreenBackground">@color/colorAccent</item>
+	    <item name="android:windowLightStatusBar">false</item>
+	    <item name="android:windowNoTitle">true</item>
+	    <item name="android:windowFullscreen">true</item>
+	    <item name="android:windowContentOverlay">@null</item>
+	    <item name="android:windowActionBar">true</item>
+    </style>
+
+    <style name="Maui.SplashTheme" parent="Maui.MainTheme.NoActionBar">
+            <item name="maui_splash">true</item>
+            <item name="android:windowBackground">@drawable/qqbsplash</item>
+            
+             <!--Android 12+ specific settings
+             See: https://developer.android.com/guide/topics/ui/splash-screen#set-theme
+             -->
+            <item name="android:windowSplashScreenBackground">@color/colorAccent</item>
+            <item name="android:state_selected">@color/colorAccent</item>
+    </style>
+    
+</resources>

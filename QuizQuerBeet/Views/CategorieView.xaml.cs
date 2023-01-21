@@ -6,5 +6,8 @@ public partial class CategorieView : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = vm;
+
+		this.NavigatingFrom += vm.OnNavigatingAway;
+		this.NavigatedTo += vm.OnNavigationTo;
 	}
 }
