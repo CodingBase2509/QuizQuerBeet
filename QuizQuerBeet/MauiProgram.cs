@@ -31,7 +31,7 @@ public static class MauiProgram
 
 			var DbPath = Path.Combine(appPath, "ExamTrainer.db");
 			options.UseSqlite($"Data Source={DbPath}");
-		});
+		}, ServiceLifetime.Singleton);
 
 		builder.Services.AddRepositories();
 
