@@ -112,7 +112,7 @@ public sealed partial class QuizEditingViewModel : ViewModelBase
             return;
         }
 
-        if (string.IsNullOrEmpty(this.newQuiz.Name))
+        if (string.IsNullOrEmpty(this.NewQuiz.Name))
         {
             await ShellService.DisplayAlertAsync("Quiz Name eingeben", "Es muss ein Name für das Quiz angegeben werden");
             return;
