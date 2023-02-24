@@ -6,12 +6,13 @@
              xmlns:vm="clr-namespace:QuizQuerBeet.ViewModels"
              x:Class="QuizQuerBeet.Views.QuizEditing"
              x:DataType="vm:QuizEditingViewModel"
+             Shell.PresentationMode="ModalAnimated"
+             Background="{StaticResource BackgroundBrush}"
              Title="{Binding Title}">
 
     <Grid
         Padding="0,0,0,0"
-        RowDefinitions="Auto,*"
-        Background="{StaticResource BackgroundBrush}">
+        RowDefinitions="Auto,*">
 
         <!-- Site-Header -->
         <VerticalStackLayout Grid.Row="0"
@@ -77,7 +78,7 @@
 
         <!-- Data -->
         <CollectionView Grid.Row="1"
-                        Margin="0,30,0,12"
+                        Margin="0,30,0,5"
                         Footer="{Binding .}"
                         ItemsUpdatingScrollMode="KeepItemsInView"
                         ItemsSource="{Binding Questions}"

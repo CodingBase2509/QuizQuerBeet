@@ -6,12 +6,12 @@
              xmlns:vm="clr-namespace:QuizQuerBeet.ViewModels"
              x:Class="QuizQuerBeet.Views.MainPage"
              x:DataType="vm:MainPageViewModel"
+             Background="{StaticResource BackgroundBrush}"
              Title="{Binding Title}">
 
     <Grid
         Padding="30,0,30,0"
-        RowDefinitions="Auto,Auto,*"
-        Background="{StaticResource BackgroundBrush}">
+        RowDefinitions="Auto,Auto,*">
 
         <!-- Header -->
         <templates:Header Grid.Row="0"

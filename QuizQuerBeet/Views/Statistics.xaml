@@ -4,9 +4,9 @@
              xmlns:vm="clr-namespace:QuizQuerBeet.ViewModels"
              x:Class="QuizQuerBeet.Views.Statistics"
              x:DataType="vm:StatisticsViewModel"
+             Background="{StaticResource BackgroundBrush}"
              Title="{Binding Title}">
-    <Grid
-        Background="{StaticResource BackgroundBrush}">
+    <Grid>
 
         <Label
             Style="{StaticResource LabelDefault}"

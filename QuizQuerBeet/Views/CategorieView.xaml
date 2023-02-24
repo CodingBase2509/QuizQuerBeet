@@ -8,12 +8,12 @@
              x:Class="QuizQuerBeet.Views.CategorieView"
              x:DataType="vm:CategorieViewModel"
              x:Name="this"
+             Background="{StaticResource BackgroundBrush}"
              Title="{Binding Title}">
 
     <Grid
         Padding="0,0,0,0"
-        RowDefinitions="Auto,Auto,*"
-        Background="{StaticResource BackgroundBrush}">
+        RowDefinitions="Auto,Auto,*">
 
         <!-- Category Header -->
         <VerticalStackLayout
