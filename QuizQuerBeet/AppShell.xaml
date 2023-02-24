@@ -16,24 +16,19 @@
              Icon="category"
              Title="Kategorien">
             <ShellContent
-                ContentTemplate="{DataTemplate views:CategorieView}"
-                Route="categories"/>
+                ContentTemplate="{DataTemplate views:CategorieView}"/>
         </Tab>
         <Tab x:Name="StartTab"
              Icon="home"
              Title="Start">
             <ShellContent
-                ContentTemplate="{DataTemplate views:MainPage}"
-                Route="mainPage"/>
+                ContentTemplate="{DataTemplate views:MainPage}"/>
         </Tab>
         <Tab x:Name="StatisticTab"
              Icon="statistic"
              Title="Statistik">
             <ShellContent
-                ContentTemplate="{DataTemplate views:Statistics}"
-                Route="statistics"/>
+                ContentTemplate="{DataTemplate views:Statistics}"/>
         </Tab>
     </TabBar>
-    
-
 </Shell>
