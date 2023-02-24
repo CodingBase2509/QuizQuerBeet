@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizQuerBeet.Domain", "Quiz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizQuerBeet.Infrastructure", "QuizQuerBeet.Infrastructure\QuizQuerBeet.Infrastructure.csproj", "{F4BCA73A-A86C-48F6-98B8-9D668146F54E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizQuerBeet.EFCoreRuntime", "QuizQuerBeet.EFCoreRuntime\QuizQuerBeet.EFCoreRuntime.csproj", "{6E811544-DC6F-4606-9532-26906F784006}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "QuizQuerBeet.EFCoreRuntime", "QuizQuerBeet.EFCoreRuntime\QuizQuerBeet.EFCoreRuntime.csproj", "{5C564944-5977-4696-94F7-574C9520ABFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,15 +31,20 @@ Global
 		{F4BCA73A-A86C-48F6-98B8-9D668146F54E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4BCA73A-A86C-48F6-98B8-9D668146F54E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4BCA73A-A86C-48F6-98B8-9D668146F54E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E811544-DC6F-4606-9532-26906F784006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E811544-DC6F-4606-9532-26906F784006}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E811544-DC6F-4606-9532-26906F784006}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E811544-DC6F-4606-9532-26906F784006}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C564944-5977-4696-94F7-574C9520ABFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C564944-5977-4696-94F7-574C9520ABFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C564944-5977-4696-94F7-574C9520ABFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C564944-5977-4696-94F7-574C9520ABFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
 	EndGlobalSection
 EndGlobal
