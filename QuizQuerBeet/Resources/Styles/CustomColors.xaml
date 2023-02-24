@@ -17,11 +17,11 @@
     <LinearGradientBrush x:Key="BackgroundBrush"
                          StartPoint="0.7,-0.1"
                          EndPoint="0.2,1">
-        <GradientStop Color="#D474A8B9"
+        <GradientStop Color="#74A8B9"
                       Offset="0"/>
-        <GradientStop Color="#D68D91B3"
+        <GradientStop Color="#8D91B3"
                       Offset="2.8"/>
-        <GradientStop Color="#E0B974AE"
+        <GradientStop Color="#B974AE"
                       Offset="1"/>
     </LinearGradientBrush>
 
