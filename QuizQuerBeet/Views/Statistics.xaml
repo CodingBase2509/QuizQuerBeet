@@ -7,7 +7,6 @@
              Background="{StaticResource BackgroundBrush}"
              Title="{Binding Title}">
     <Grid>
-
         <Label
             Style="{StaticResource LabelDefault}"
             Text="Comming soon!"
