@@ -164,5 +164,5 @@ public sealed partial class QuizEditingViewModel : ViewModelBase
         await ShellService.GoBackAsync();
     }
 
-    #endregion
+#endregion
 }
