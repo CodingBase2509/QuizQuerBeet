@@ -2,6 +2,7 @@
 using QuizQuerBeet.Infrastructure.Context;
 
 using Microsoft.EntityFrameworkCore;
+using CommunityToolkit.Maui;
 
 namespace QuizQuerBeet;
 
@@ -13,7 +14,8 @@ public static class MauiProgram
 
 		builder
 			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
+            .UseMauiCommunityToolkit()
+            .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
