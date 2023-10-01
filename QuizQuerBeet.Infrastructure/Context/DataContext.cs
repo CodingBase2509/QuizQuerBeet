@@ -3,7 +3,7 @@ using QuizQuerBeet.Infrastructure.Converter;
 
 namespace QuizQuerBeet.Infrastructure.Context;
 
-public class DataContext: DbContext
+public class DataContext : DbContext
 {
     public DbSet<Category>? Categories { get; set; }
 
@@ -16,10 +16,13 @@ public class DataContext: DbContext
     public DbSet<Statistic>? Statistics { get; set; }
 
     public DataContext(DbContextOptions<DataContext> options)
-        :base(options)
-	{
-        this.Database.EnsureCreated();
-	}
+        : base(options)
+    {
+        if (this.Database.GetPendingMigrations().Any())
+        {
+            this.Database.Migrate();
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -34,7 +37,7 @@ public class DataContext: DbContext
 
         modelBuilder.Entity<Quiz>()
             .Navigation(e => e.Questions)
-            .AutoInclude(); 
+            .AutoInclude();
 
         modelBuilder.Entity<Question>()
             .Navigation(e => e.Answers)

@@ -1,8 +1,4 @@
-﻿using System.Linq.Expressions;
-using QuizQuerBeet.Domain.Interfaces;
-using QuizQuerBeet.Infrastructure.Context;
-using QuizQuerBeet.Infrastructure.Contracts;
-
+﻿using QuizQuerBeet.Domain.Interfaces;
 namespace QuizQuerBeet.Infrastructure.Repositories;
 
 internal class GenericRepository<T>: IGenericRepository<T> where T : class, IIdentifiable

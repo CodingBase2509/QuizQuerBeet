@@ -172,6 +172,7 @@
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         Command="{Binding AddQuestionCommand}"/>
+
                     </Grid>
 
                 </DataTemplate>
@@ -189,6 +190,15 @@
                         Style="{StaticResource LargeLabelDefault}"
                         TextColor="{StaticResource Primary}"
                         Text="Neue Frage hinzufügen"/>
+
+                    <ImageButton
+                        Source="plus"
+                        Aspect="Fill"
+                        WidthRequest="25"
+                        HeightRequest="25"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Command="{Binding AddQuestionCommand}"/>
 
                 </VerticalStackLayout>
 

@@ -1,13 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:templates="clr-namespace:QuizQuerBeet.Views.Templates"
+             xmlns:models="clr-namespace:QuizQuerBeet.Domain.Models;assembly=QuizQuerBeet.Domain"
              xmlns:vm="clr-namespace:QuizQuerBeet.ViewModels"
+             xmlns:services="clr-namespace:QuizQuerBeet.Services"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="QuizQuerBeet.Views.QuestionEditing"
              x:DataType="vm:QuestionEditingViewModel"
-             Shell.PresentationMode="ModalAnimated"
+             x:Name="this"
              Background="{StaticResource BackgroundBrush}"
+             Shell.PresentationMode="ModalAnimated"
              Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <services:CountToVisibilityConverter x:Key="CountToVisibilityConverter" />
+            <toolkit:ByteArrayToImageSourceConverter x:Key="BytesToImageConverter"/>
+            <services:ImageArrayToBoolConverter x:Key="ImageConverter">
+                <services:ImageArrayToBoolConverter.EmptyArrayTemplate>
+                    <Grid 
+                         BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
+                         HorizontalOptions="Fill"
+                         VerticalOptions="Fill">
+
+                        <Button Grid.RowSpan="2"
+                                BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="Fill"
+                                ZIndex="3"
+                                Command="{Binding Source={RelativeSource
+                                                        AncestorType={x:Type vm:QuestionEditingViewModel}},
+                                                        Path=UploadPictureCommand}"/>
+
+                        <Grid 
+                             RowDefinitions="*,*"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+                            <Image Grid.Row="0"
+                                   HeightRequest="80"
+                                   Source="fileupload"
+                                   Aspect="AspectFit"/>
+
+                            <Label Grid.Row="1"
+                                   Style="{StaticResource LabelDefault}"
+                                   Text="Bild hochladen"
+                                   Margin="5"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Start"/>
+                        </Grid>
+                    </Grid>
+                </services:ImageArrayToBoolConverter.EmptyArrayTemplate>
+
+                <services:ImageArrayToBoolConverter.FilledArrayTemplate>
+                    <Grid
+                          BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
+                        <Image
+                            Aspect="AspectFit"
+                            Margin="5"
+                            Source="{Binding Image}">
+                        </Image>
+                        <Label
+                            Style="{StaticResource LabelDefault}"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            Text="LOL"/>
+                    </Grid>
+                </services:ImageArrayToBoolConverter.FilledArrayTemplate>
+            </services:ImageArrayToBoolConverter>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <Grid
         Padding="30,0,30,0"
         Margin="0,-10"
@@ -16,7 +82,7 @@
         <!-- Site Header -->
         <templates:Header Grid.Row="0"
             Margin="0,42,0,0"
-            Text="Neue Frage">
+            Text="{Binding HeaderTitle}">
             <HorizontalStackLayout
                 Margin="0,0,10,0">
 
@@ -40,15 +106,109 @@
 
         <!-- Content -->
         <Grid Grid.Row="1"
-              RowDefinitions="Auto,Auto,Auto">
-
+              RowDefinitions="Auto,Auto,*">
+            <!-- Picture upload -->
             <templates:QQBFrame Grid.Row="0"
                                 Margin="0,20,0,0"
                                 Padding="0"
-                                HeightRequest="200">
-                <ImageButton
-                    Source="quit"/>
+                                HeightRequest="200"
+                                Content="{Binding NewQuestion.Image, Converter={StaticResource ImageConverter}}">
             </templates:QQBFrame>
+
+            <!-- Question input -->
+            <templates:InputBorder Grid.Row="1"
+                                   Margin="0,18,0,0">
+                <Editor
+                        VerticalTextAlignment="Start"
+                        HeightRequest="100"
+                        Placeholder="Frage hier eingeben..."
+                        PlaceholderColor="Grey"
+                    Text="{Binding NewQuestion.Value}"/>
+            </templates:InputBorder>
+
+            <Grid Grid.Row="2"
+                  Margin="0,20,0,0"
+                  RowDefinitions="Auto,*">
+
+                <Label Grid.Row="0"
+                    Text="Antworten hinzufügen:"
+                    TextColor="{StaticResource Primary}"
+                    Style="{StaticResource LargeLabelDefault}"/>
+
+                <!-- Answers -->
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding Answers}"
+                                Footer="{Binding .}"
+                                ItemsUpdatingScrollMode="KeepItemsInView"
+                                SelectionMode="None">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Answer">
+                            <SwipeView
+                                ios:SwipeView.SwipeTransitionMode="Drag"
+                                android:SwipeView.SwipeTransitionMode="Drag"
+                                Margin="10,0">
+                                <SwipeView.RightItems>
+                                    <SwipeItems Mode="Execute">
+                                        <SwipeItem Text="Delete"
+                                                   IconImageSource="quit"
+                                                   BackgroundColor="red"
+                                                   Command="{Binding Source={RelativeSource
+                                                        AncestorType={x:Type vm:QuestionEditingViewModel}},
+                                                        Path=DeleteAnswerCommand}"
+                                                   CommandParameter="{Binding .}"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+
+                                <!-- View Elements -->
+                                <Grid ColumnDefinitions="*,Auto"
+                                      Margin="10">
+
+                                    <RadioButton Grid.Row="0"
+                                                 BackgroundColor="Transparent"
+                                                 HorizontalOptions="Start"
+                                                 VerticalOptions="Center"
+                                                 IsChecked="{Binding IsCorrectAnswer}"
+                                                 GroupName="Answers"/>
+
+                                    <templates:InputBorder Grid.Row="1"
+                                                           HeightRequest="60"
+                                                           Margin="50,0,0,0"
+                                                           MaximumHeightRequest="100">
+                                        <Editor
+                                            VerticalOptions="Start"
+                                            VerticalTextAlignment="Start"
+                                            HorizontalTextAlignment="Start"
+                                            Placeholder="Antwort angeben..."
+                                            PlaceholderColor="Grey"
+                                            Text="{Binding Value}"/>
+                                    </templates:InputBorder>
+                                </Grid>
+
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <!-- Add Answer footer -->
+                    <CollectionView.FooterTemplate>
+                        <DataTemplate>
+                            <Grid
+                                IsVisible="{Binding Answers.Count, Converter={StaticResource CountToVisibilityConverter}}"
+                                HorizontalOptions="Fill">
+                                <ImageButton
+                                    Source="plus"
+                                    Aspect="Fill"
+                                    WidthRequest="25"
+                                    HeightRequest="25"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    Command="{Binding AddAnswerCommand}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.FooterTemplate>
+                </CollectionView>
+
+            </Grid>
 
         </Grid>
     </Grid>

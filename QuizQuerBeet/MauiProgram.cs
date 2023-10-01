@@ -35,6 +35,9 @@ public static class MauiProgram
 			options.UseSqlite($"Data Source={DbPath}");
 		}, ServiceLifetime.Singleton);
 
+		builder.Services.AddTransient<ImageService>();
+		builder.Services.AddTransient(sp => MediaPicker.Default);
+
 		builder.Services.AddRepositories();
 
 		builder.Services.AddViewModels();
